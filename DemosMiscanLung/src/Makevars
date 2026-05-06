@@ -1,0 +1,7 @@
+R_INC      = $(shell Rscript -e "cat(R.home('include'))")
+RCPP_INC   = $(shell Rscript -e "cat(system.file('include', package='Rcpp'))")
+ARMA_INC   = $(shell Rscript -e "cat(system.file('include', package='RcppArmadillo'))")
+
+PKG_CXXFLAGS = -I"$(R_INC)" -I"$(RCPP_INC)" -I"$(ARMA_INC)"
+
+PKG_LIBS     = -L. -lmycode

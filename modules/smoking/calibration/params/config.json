@@ -1,0 +1,43 @@
+{
+    "configuration": {
+        "num_node": 1,
+        "num_seed": 1,
+        "num_strategy": 1,
+        "yearstop": 2050,
+        "smoking ban policy index": 0
+    },
+    "calibration": {
+        "smoking": 1
+    },
+    "simulation": {
+        "start_row": 0,
+        "trunc_age": 90,
+        "condition_number": 3
+    },
+    "lc_transition_rates": {
+        "AJCC6": {
+            "s1": 0.894,
+            "s2": 0.955,
+            "s3": 0.735
+        },
+        "AJCC6&7": {
+            "s1": 0.868,
+            "s2": 0.970,
+            "s3": 0.865
+        },
+        "AJCC7": {
+            "s1": 0.829,
+            "s2": 0.930,
+            "s3": 0.855
+        },
+        "AJCC8": {
+            "s1": 0.735,
+            "s2": 0.940,
+            "s3": 0.865
+        }
+    },
+    "psa": {
+        "num_intervals": 5,
+        "proportion": 0.5
+    }
+}

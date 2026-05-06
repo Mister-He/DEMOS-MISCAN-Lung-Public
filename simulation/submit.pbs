@@ -1,0 +1,50 @@
+#!/bin/bash
+#PBS -q demos
+#PBS -N demos_miscan_lung
+#PBS -l select=1:ncpus=1:mem=4gb
+#PBS -l walltime=120:00:00
+#PBS -J 1-120
+#PBS -j oe
+#PBS -o $HOME/Yichen/DEMOS-MISCAN-Lung/outputs/pbs_job/
+
+# === Set working environment ===
+PROJECT_DIR=$HOME/Yichen/DEMOS-MISCAN-Lung/simulation
+OUT_DIR=$HOME/Yichen/DEMOS-MISCAN-Lung/outputs/pbs_job
+
+cd "$PROJECT_DIR" || { echo "Cannot cd to $PROJECT_DIR"; exit 1; }
+mkdir -p "$OUT_DIR"
+
+# === Configuration ===
+TOTAL_NODES=120
+START_SEED=21
+END_SEED=60
+STRATS=271
+START_POLICY=0
+END_POLICY=4
+
+# === Determine Task ID ===
+# PBS Pro uses PBS_ARRAY_INDEX, Torque uses PBS_ARRAYID
+NODE_ID=${PBS_ARRAY_INDEX:-$PBS_ARRAYID}
+
+set -eu
+set -o pipefail
+echo "Running on: $(hostname)"
+echo "Working dir: $PROJECT_DIR"
+echo "Array index: ${PBS_ARRAY_INDEX:-${PBS_ARRAYID:-NA}}"
+
+if [ -z "$NODE_ID" ]; then
+    echo "Error: Could not determine NODE ID. Are you running this via qsub?"
+    exit 1
+fi
+
+echo "Starting Array Task $NODE_ID of $TOTAL_NODES"
+
+# === Run Simulation ===
+./simulation.sh run_hpc_node \
+    --id $NODE_ID \
+    --nodes $TOTAL_NODES \
+    --start_seed $START_SEED \
+    --end_seed $END_SEED \
+    --strategies $STRATS \
+    --start_policy $START_POLICY \
+    --end_policy $END_POLICY

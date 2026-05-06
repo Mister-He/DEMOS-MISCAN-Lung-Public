@@ -1,0 +1,18 @@
+{
+    "configuration": {
+        "num_node": 1,
+        "num_seed": 1,
+        "num_strategy": 1,
+        "yearstop": 2050,
+        "smoking ban policy index": 0
+    },
+    "simulation": {
+        "start_row": 0,
+        "trunc_age": 90,
+        "condition_number": 20
+    },
+    "psa": {
+        "flag": true,
+        "samples": 100
+    }
+}

@@ -1,0 +1,16 @@
+Package: DemosMiscanLung
+Type: Package
+Title: Microsimulation Model for Lung Cancer Screening in Singapore
+Version: 0.0.1
+Date: 2026-04-20
+Authors@R: person("Yichen", "He", role = c("aut", "cre"), email = "e0732876@u.nus.edu")
+Description: DemosMiscanLung implements a discrete event microsimulation model for evaluating
+    lung cancer screening policies. The model simulates individual life histories including smoking
+    exposure, lung cancer natural history (onset, progression through stages, and outcomes),
+    screening interventions, treatment, and associated costs and quality-adjusted life years (QALYs).
+    The model incorporates gender-specific and race-specific risk parameters, family history of lung
+    cancer, smoking cessation following diagnosis, and fertility patterns. High-performance C++
+    implementations enable efficient population-level simulations and scenario comparisons.
+License: GPL (>= 2)
+Imports: Rcpp (>= 1.1.0)
+LinkingTo: Rcpp, RcppArmadillo
