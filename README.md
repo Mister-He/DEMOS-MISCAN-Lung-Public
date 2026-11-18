@@ -134,5 +134,5 @@ are not documented here. For access questions, contact [Yichen He](mailto:e07328
 with the dataset name, institution, intended use, and required variables; the
 data custodian may require separate approval.
 
-Package version: `DemosMiscanLung 0.0.1`. License: GPL (>= 2); see
+Package version: `DemosMiscanLung 1.1.0`. License: GPL (>= 2); see
 [DemosMiscanLung/DESCRIPTION](DemosMiscanLung/DESCRIPTION).
