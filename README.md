@@ -14,6 +14,7 @@ scale.
 | `params/`, `data/` | Configuration, model inputs, and fitted parameters |
 | `modules/` | Smoking, cancer-risk, survival, and cost fitting |
 | `analysis/` | Result aggregation and manuscript tables/numbers |
+| `outputs/linux/` | Raw simulation results downloaded from the HPC cluster |
 | `outputs/DEMOS_LC_result/` | Saved results, figure code, and plots |
 
 ## Installation
@@ -82,6 +83,12 @@ Saved inputs are in `outputs/DEMOS_LC_result/outs_sim/`. The `aggressive/` and
 `conservative/` branches contain screening results with and without survival
 extrapolation; `fhlc/`, `packyear/`, `high_sensitivity/`, and
 `low_sensitivity/` contain additional analyses. No new simulation is needed.
+These CSV files were produced from the raw results in `outputs/linux/` with
+[analysis/icer_table_construction.R](analysis/icer_table_construction.R).
+
+`SA_TOPSIS_weights.R` and `SA_subset_runs.R` in `outputs/DEMOS_LC_result/` are
+sensitivity analyses added for the rebuttal (TOPSIS weights and number of
+simulation runs). Their results are saved in `outputs/`.
 
 ### Figures
 
@@ -108,20 +115,10 @@ sensitivity block refers to obsolete `screen_sensitivity/`; use
 
 ### Tables and reported numbers
 
-Use [analysis/derive.R](analysis/derive.R). Run `Table S6`, `Table S7`, and
-`Table S8` in order, giving each `write_xlsx()` call a distinct output name.
-Later sections derive reported numbers for status-quo screening, tobacco bans,
-alternative screening settings, and family-history screening.
-
-| Output | Section |
-| --- | --- |
-| Table S6 | Absolute QALYs, late-stage cases, deaths, and costs by sex/policy |
-| Table S7 | MLSOD10 (Strategies 22 and 157) |
-| Table S8 | TRS (Strategies 51 and 186) |
-| Screening and policy results | `Status quo...`, `Smoking ban...`, and `FHLC` blocks |
-
-The opening exploratory section requires the individual-level `populationdata`
-object. Later sections use saved CSV results. They compare each strategy with
+Use [analysis/derive.R](analysis/derive.R) to reproduce the numbers reported in
+the manuscript and SI. Its sections follow the manuscript: abstract, status-quo
+screening, smoking ban, stringent ban, and discussion. All sections use saved CSV
+results. They compare each strategy with
 the same-seed, same-policy baseline and report median, 2.5th, and 97.5th
 percentiles. Preserve seed ordering in paired comparisons.
 
