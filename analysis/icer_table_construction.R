@@ -119,7 +119,7 @@ seed_grp <- c("1_100")
 for (seed_grp_idx in seed_grp) {
   # Loop through each seed
   # Folder containing your files
-  file_paths <- list.files(path = paste0("../linux/txts_", seed_grp_idx), pattern = "*.txt", full.names = TRUE)
+  file_paths <- list.files(path = paste0("../outputs/linux/txts_", seed_grp_idx), pattern = "*.txt", full.names = TRUE)
 
   # Process each file
   for (file in file_paths) {
